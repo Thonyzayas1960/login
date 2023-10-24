@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado de Afiliación</title>
+    <!-- Enlace a Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .mensaje-error {
+            color: red;
+            font-weight: bold;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-4">Resultado</h1>
+        {% if usuario %}
+        <!-- Si el usuario está afiliado, muestra sus datos -->
+        <p class="lead">Cédula de Identidad: {{ usuario.cedula_identidad }}</p>
+        <p class="lead">Nombre Completo: {{ usuario.nombre_completo }}</p>
+        <p class="lead">Edad: {{ usuario.edad }}</p>
+        <p class="lead">Sexo: {{ usuario.sexo }}</p>
+        <p class="lead">Número de Teléfono: {{ usuario.telefono }}</p>
+        <p class="lead">Domicilio: {{ usuario.domicilio }}</p>
+        <p class="lead">Partido Afiliado: {{ usuario.partido }}</p>
+        {% elif mensaje_error %}
+        <!-- Si el usuario no está afiliado, muestra el mensaje de error -->
+        <p class="mensaje-error">{{ mensaje_error }}</p>
+        {% endif %}
+        <div class="btn-container">
+            <a href="/usuario" class="btn btn-primary">Volver al Portal</a>
+        </div>
+    </div>
+    <!-- Scripts de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+ZnF5CAq5R5SNw5kFJ2Pskv6JwJ5B6x0NEud/ew1X0Ow1T5b" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-vy3F5Xx6I5w5f5j7F4SeF5w5l5u5o5r5o5P5p5U5f5r5i5o5r5o5W5f5e5I5S5a5N5t5z5jc5D" crossorigin="anonymous"></script>
+</body>
+</html>

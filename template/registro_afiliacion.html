@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .caja {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .titulo {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-control {
+            margin-bottom: 10px;
+        }
+
+        .boton {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            margin-top: 10px;
+            text-decoration: none; /* Quita el subrayado del botón */
+        }
+
+        .boton:hover {
+            background-color: #0056b3;
+        }
+
+        .boton-volver {
+            display: block;
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            text-decoration: none; /* Quita el subrayado del botón */
+        }
+
+        .alert-success {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .alert-error {
+            background-color: #f44336;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+    <title>Registro de Afiliación</title>
+</head>
+<body>
+    <div class="caja">
+        <form class="form-control" action="/registrar-afiliacion" method="post">
+            <h1 class="titulo">Registro de Afiliación</h1>
+            <!-- Mostrar mensajes flash -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div>
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message[1] }}">{{ message[0] }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            <!-- Fin de mensajes flash -->
+            <div class="form-group">
+                <label for="nombre_completo">Nombre Completo con Apellido Completo:</label>
+                <input type="text" class="form-control" id="nombre_completo" name="nombre_completo" required>
+            </div>
+            <div class="form-group">
+                <label for="cedula_identidad">Cédula de Identidad:</label>
+                <input type="text" class="form-control" id="cedula_identidad" name="cedula_identidad" required>
+            </div>
+            <div class="form-group">
+                <label for="edad">Edad:</label>
+                <input type="number" class="form-control" id="edad" name="edad" required>
+            </div>
+            <div class="form-group">
+                <label for="sexo">Sexo:</label>
+                <select class="form-control" id="sexo" name="sexo">
+                    <option value="M" selected>Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Número de teléfono:</label>
+                <input type="text" class="form-control" id="telefono" name="telefono" required>
+            </div>
+            <div class="form-group">
+                <label for="domicilio">Domicilio:</label>
+                <input type="text" class="form-control" id="domicilio" name="domicilio" required>
+            </div>
+            <div class="form-group">
+                <label for="partido">Partido al cual se va a afiliar:</label>
+                <select class="form-control" id="partido" name="partido">
+                    <option value="Partido Colorado">Partido Colorado</option>
+                    <option value="Partido Liberal">Partido Liberal</option>
+                    <option value="Cruzada Nacional">Cruzada Nacional</option>
+                </select>
+            </div>
+            <button type="submit" class="boton">Registrar</button>
+            <a href="/admin" class="boton boton-volver">Volver</a>
+        </form>
+    </div>
+</body>
+</html>

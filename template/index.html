@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Agrega el script de Tidio Chat -->
+    <script src="//code.tidio.co/9uifgsinnltnisod8usmejzeceqdjwkr.js" async></script>
+    
+    <style>
+        body {
+            background: linear-gradient(to bottom, #f0f0f0, #d9d9d9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .caja {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto; /* Centra horizontalmente */
+        }
+
+        .titulo {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .boton {
+            background: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        .boton:hover {
+            background: #0056b3;
+        }
+
+        .enlace {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* Estilos adicionales para el formulario */
+        .form-group {
+            text-align: left;
+        }
+
+    </style>
+    <title>Portal Administrador y Usuario</title>
+</head>
+<body>
+    <div class="caja">
+        <form class="form-control" action="acceso-login" method="post">
+            <h1 class="titulo">Ingreso</h1>
+            {% if mensaje %}
+                {{ mensaje }}
+            {% endif %}
+            <div class="form-group">
+                <label for="exampleInputEmail1">Correo Electrónico</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su correo" name="txtCorreo">
+                <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tu correo electrónico con nadie más.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Contraseña</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" name="txtPassword">
+            </div>
+            <button type="submit" class="boton boton-ingresar">Ingresar</button>
+        </form>
+        
+        <!-- Agrega el contenedor de Tidio Chat -->
+        <div class="tidio-chat"></div>
+        
+        <div style="margin-top: 20px;">
+            <a class="boton enlace" href="/registro-afiliacion-publico">Registrarse</a>
+            <a class="boton enlace" href="/consultar-afiliacion">Consultar</a>
+            <a href="/registro.html" class="boton enlace">Registro</a>
+        </div>
+    </div>
+</body>
+</html>
